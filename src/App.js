@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Search from "./pages/Search";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/random" component={Random} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/SignUp" component={SignUp} />
         </Wrapper>
         <Footer />
       </div>
