@@ -8,7 +8,7 @@ import "./random.css";
 function Random() {
   return (
     <div>
-      <Container className="spin" style={{ marginTop: 30 }}>
+      <Container className="spin" style={{ marginTop: 250 }}>
         <Row className="spinWheel">
           <Spinner />
         </Row>
