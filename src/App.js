@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Random from "./pages/Random";
-import Header from "./components/Header";
 import Search from "./pages/Search";
-import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
 import Restaurant from "./pages/Restaurant";
+import FilterPage from "./pages/FilterPage";
+  
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
           <Route exact path="/random" component={Random} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/results" component={Restaurant} />
+          <Route exact path="/filter" component={FilterPage} />
       </div>
     </Router>
   );
