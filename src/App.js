@@ -5,19 +5,17 @@ import Header from "./components/Header";
 import Search from "./pages/Search";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
+import Restaurant from "./pages/Restaurant";
 
 function App() {
   return (
     <Router>
       <div>
-        <Header />
-        <Wrapper>
           <Route exact path="/" component={Random} /> {/*temporary, will be login*/}
           {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/random" component={Random} />
           <Route exact path="/search" component={Search} />
-        </Wrapper>
-        <Footer />
+          <Route exact path="/results" component={Restaurant} />
       </div>
     </Router>
   );
