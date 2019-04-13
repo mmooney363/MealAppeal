@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style_signIn.css";
 
-function SignUp(props) {
+class SignIn extends Component {
+  render() {
   return (
 
     <div>
@@ -29,5 +30,6 @@ function SignUp(props) {
   
   );
 }
+}
 
-export default SignUp;
+export default SignIn;
