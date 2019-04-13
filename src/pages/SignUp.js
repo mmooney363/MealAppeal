@@ -1,7 +1,9 @@
 import React from "react";
 import "./style_signUp.css";
 
-function SignUp(props) {
+//function SignUp(props) {
+  class SignUp extends React.Component {
+  render() {
   return (
 
     <div>
@@ -33,5 +35,7 @@ function SignUp(props) {
   
   );
 }
+  }
+
 
 export default SignUp;

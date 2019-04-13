@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/random" component={Random} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/SignIn" component={SignIn} />
         </Wrapper>
         <Footer />
       </div>
