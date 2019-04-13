@@ -17,7 +17,7 @@ a{
 /*WRAPPER*/
 #wrapper{ 
 	margin: 40px auto 0;	
-	width:250px; 
+	width:266px; 
 	position:relative;
 }
 
@@ -36,6 +36,7 @@ a{
 	border:8px solid #fff;
 	box-shadow:rgba(0,0,0,0.2) 0px 0px 10px, rgba(0,0,0,0.05) 0px 3px 0px;
 	transform: rotate(0deg);
+	margin: 0 auto;
 }
 
 #wheel:before{
@@ -67,8 +68,8 @@ a{
 	border-width: 130px 75px 0;
 	border-color: #19c transparent;
 	transform-origin: 75px 129px;
-	left:50px;
-	top:-4px;	
+	left:40px;
+	top:-10px;	
 	opacity:1;
 }
 
@@ -78,7 +79,7 @@ a{
 	-moz-transform: rotate(60deg);
 	-o-transform: rotate(60deg);
 	-ms-transform: rotate(60deg);
-	border-color: #16a085 transparent;	
+	border-color: #73BFB8 transparent;	
 }
 #wheel div.sec:nth-child(2){
 	transform: rotate(120deg);
@@ -86,7 +87,7 @@ a{
 	-moz-transform: rotate(120deg);
 	-o-transform: rotate(120deg);
 	-ms-transform: rotate(120deg);
-	border-color: #2980b9 transparent;	
+	border-color: #3DA5D9 transparent;	
 }
 #wheel div.sec:nth-child(3){
 	transform: rotate(180deg);
@@ -94,7 +95,7 @@ a{
 	-moz-transform: rotate(180deg);
 	-o-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
-	border-color: #34495e transparent;	
+	border-color: #2364AA transparent;	
 }
 #wheel div.sec:nth-child(4){
 	transform: rotate(240deg);
@@ -102,7 +103,7 @@ a{
 	-moz-transform: rotate(240deg);
 	-o-transform: rotate(240deg);
 	-ms-transform: rotate(240deg);
-	border-color: #f39c12 transparent;	
+	border-color: #FEC601 transparent;	
 }
 #wheel div.sec:nth-child(5){
 	transform: rotate(300deg);
@@ -110,7 +111,7 @@ a{
 	-moz-transform: rotate(300deg);
 	-o-transform: rotate(300deg);
 	-ms-transform: rotate(300deg);
-	border-color: #d35400 transparent;	
+	border-color: #EA7317 transparent;	
 }
 #wheel div.sec:nth-child(6){
 	transform: rotate(360deg);
