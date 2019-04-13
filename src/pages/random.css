@@ -8,3 +8,9 @@
 .spinWheel{
     max-width: 100%;
 }
+
+.btn {
+    width: 75%;
+    margin-top: 75px;
+    align-content: center;
+}
