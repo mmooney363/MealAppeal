@@ -6,7 +6,7 @@ class SignIn extends Component {
   return (
 
     <div>
-    <form action="/action_page.php" style="border:1px solid #ccc">
+    <form action="/action_page.php">
     <div class="container">
     <h1>Sign In</h1>
     <p>Please enter your information to sign in.</p>
