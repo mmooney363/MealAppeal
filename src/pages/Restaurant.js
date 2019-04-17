@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import API from "../utils/API";
 import Header from "../components/Header";
 import Results from "../components/Results";
@@ -9,8 +9,8 @@ import Container from "../components/Container";
 function Restaurant() {
     return (
       <div>
-          <Header />
-          <Container>
+        <Header />
+        <Container>
             <Results />
         </Container>
         <Footer />

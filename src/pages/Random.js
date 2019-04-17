@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Spinner from "../components/Spinner";
+import Footer from "../components/Footer";
 import "./random.css";
 
 function Random() {
@@ -14,6 +15,7 @@ function Random() {
           <Spinner />
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 }

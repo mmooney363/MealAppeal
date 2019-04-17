@@ -1,6 +1,6 @@
 .jumbotron {
-  margin-top: 50px;
-  margin-bottom: 75px;
+  margin-top: 15%;
+  margin-bottom: 20%;
   padding: 40px 25px;
 }
 
@@ -8,5 +8,5 @@
 
 .display-4{
   margin-bottom: 0px;
-  font-size:34px;
+  font-size:24px;
 }
