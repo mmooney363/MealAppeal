@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import "./spinner.js";
-import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom";
 import Winner from "../Winner";
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
@@ -26,9 +26,10 @@ function Spinner(props) {
 
         <div id="shine"></div>
       </div>
-      <Button variant="primary" size="lg" style={{ width: "100%"  }}>
+      <Link to="/filter"
+              className={window.location.pathname === "/filter" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%"  }}>
         Want something more specific?
-      </Button>
+      </Link>
     </div>
   );
 }
