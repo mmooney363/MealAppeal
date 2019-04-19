@@ -5,20 +5,24 @@ class SearchForm extends Component {
     constructor() {
         super();
         this.state = {
-            searchLocationQuery: ""
+            searchLocationQuery: "",
+            searchFoodQuery: ""
         }
     }
 
     handleSearchChange = (e) => {
         this.setState({
-            searchLocationQuery: e.target.value
+            [e.target.name]: e.target.value 
         })
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
     
-        this.props.onFormSubmit(this.state.searchLocationQuery)
+        const { searchLocationQuery, searchFoodQuery } = this.state;
+        console.log(searchFoodQuery);
+        console.log(searchLocationQuery);
+        this.props.onFormSubmit(searchLocationQuery, searchFoodQuery);
     }
 
     render(){
@@ -28,16 +32,26 @@ class SearchForm extends Component {
                 <form onSubmit={(e) => this.handleFormSubmit(e)}>
                     <label 
                     htmlFor = 'location'
-                    arialabel = 'enter address, neighbourhood, city, province or postal code'
+                    arialabel = 'Enter Address or Zip Code'
                     className = 'searchForm__label'
-                    >Show me tha food!</label>
+                    >Show Restaurants!</label>
                     <input 
                     type = 'text'
                     id = 'location'
-                    placeholder = 'address, neighbourhood, city, province or postal code'
+                    name = 'searchLocationQuery'
+                    placeholder = 'Enter Address or Zip Code'
                     value = {this.state.searchLocationQuery}
                     onChange = {this.handleSearchChange}
                     className = 'searchForm__input'
+                    />
+                    <input 
+                    type = 'text'
+                    id = 'food'
+                    name = 'searchFoodQuery'
+                    placeholder = 'Enter Food'
+                    value = {this.state.searchFoodQuery}
+                    onChange = {this.handleSearchChange}
+                    className = 'searchForm__Foodinput'
                     />
                     <button 
                     type = 'submit'
