@@ -1,0 +1,9 @@
+.search-container {
+    margin-top: 10%;
+}
+
+.row {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
