@@ -1,16 +1,16 @@
-
+#wrapper {
+ margin: 0;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ -ms-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+}
 
 .winner {
     font-size: 24px;
     color:black;
 }
 
-.spinWheel{
-    max-width: 100%;
-}
 
-.btn {
-    width: 75%;
-    margin-top: 75px;
-    align-content: center;
-}
+
