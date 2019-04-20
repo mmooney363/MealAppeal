@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "./style.css";
 
 class RestaurantList extends Component {
 
@@ -14,27 +15,28 @@ class RestaurantList extends Component {
     }
 
     componentDidMount () {
-        this.getRestaurants("Philadelphai, PA");
+        this.getRestaurants("Philadelphia, PA");
     }
 
     componentDidUpdate (prevProps, prevState) {
         if(this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
             this.setState({
                 results: [],
-            }, () => this.getRestaurants(this.props.searchLocationQuery))
+            }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
             }
+        
+        
         }
 
 
-    getRestaurants = (locationSearched) => {
+    getRestaurants = (locationSearched, foodType) => {
         this.setState({ loading: true })
 
-        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}`, {
+        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
             headers: {
                 Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
             },
             params: {
-                categories: 'restaurants',
                 limit: 6
             }
         })
@@ -69,14 +71,18 @@ class RestaurantList extends Component {
                     <p className = "RestaurantInfo__para">
                     </p>
 
-                    
+                    <img 
+                        src = {require(`../../images/${result.rating}.png`)}
+                        alt = {`yelp ratings: ${result.rating}/5`}
+                        className = "RestaurantInfo__rating"/>
+
 
                     <p className = "RestaurantInfo__reviewCount"> Based on {result.review_count} Reviews</p>
                
                     <a 
                         href= {result.url} 
                         className = "RestaurantInfo__website">
-                            More infomration on Yelp
+                            More info on Yelp!
                     </a>
 
                     
