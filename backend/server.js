@@ -11,6 +11,7 @@ app.use('/Users', UserRoutes);
 app.use(cors());
 app.use(bodyParser.json());
 
+
 UserRoutes.route('/').get(function(req, res) {
     User.find(function(err, Users) {
         if (err) {
