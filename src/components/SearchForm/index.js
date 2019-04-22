@@ -29,12 +29,13 @@ class SearchForm extends Component {
         return (
             <div className = "searchForm">
                 {/*add an event listener of form submit so the state only get set when the form is submitted*/}
-                <form onSubmit={(e) => this.handleFormSubmit(e)}>
+                <form style = {{padding: "0 15px"}} onSubmit={(e) => this.handleFormSubmit(e)}>
                     <label 
                     htmlFor = 'location'
                     arialabel = 'Enter Address or Zip Code'
                     className = 'searchForm__label'
-                    >Show Restaurants!</label>
+                    style = {{textAlign: "center", width: "100%", marginTop: "10px"}}
+                    ></label>
                     <input 
                     type = 'text'
                     id = 'location'
@@ -43,6 +44,7 @@ class SearchForm extends Component {
                     value = {this.state.searchLocationQuery}
                     onChange = {this.handleSearchChange}
                     className = 'searchForm__input'
+                    style = {{height: "20px"}}
                     />
                     <input 
                     type = 'text'
@@ -52,6 +54,7 @@ class SearchForm extends Component {
                     value = {this.state.searchFoodQuery}
                     onChange = {this.handleSearchChange}
                     className = 'searchForm__Foodinput'
+                    style = {{height: "20px"}}
                     />
                     <button 
                     type = 'submit'
