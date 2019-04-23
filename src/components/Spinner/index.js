@@ -26,8 +26,8 @@ function Spinner(props) {
 
         <div id="shine"></div>
       </div>
-      <Link to="/filter"
-              className={window.location.pathname === "/filter" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%"  }}>
+      <Link to="/search"
+              className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%"  }}>
         Want something more specific?
       </Link>
     </div>

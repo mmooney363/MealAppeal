@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import "./style.css";
 
 class RestaurantList extends Component {
@@ -14,19 +15,19 @@ class RestaurantList extends Component {
         };
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.getRestaurants("Philadelphia, PA");
     }
 
-    componentDidUpdate (prevProps, prevState) {
-        if(this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
             this.setState({
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
-            }
-        
-        
         }
+
+
+    }
 
 
     getRestaurants = (locationSearched, foodType) => {
@@ -40,74 +41,83 @@ class RestaurantList extends Component {
                 limit: 6
             }
         })
-        .then((res) => {
-            console.log(res.data.businesses)
-            this.setState({ results: res.data.businesses, loading: false})
-        })
-        .catch((err) => {
-            this.setState({ errorState: "Sorry"})
-        })
+            .then((res) => {
+                console.log(res.data.businesses)
+                this.setState({ results: res.data.businesses, loading: false })
+            })
+            .catch((err) => {
+                this.setState({ errorState: "Sorry" })
+            })
     }
 
-    renderEmptyState () {
+    renderEmptyState() {
         return (
-            <h2 className = "heading-tertiary">Comin' right up! </h2>
+            <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Comin' right up! </h2>
         )
     }
 
-    renderRestaurantInfo () {
-        const RestaurantList = this.state.results.map((result) => {
-            return (    
-                <div 
-                    className = "RestaurantInfo"
-                    key = {result.id}
-                >
-                    <img src = {result.image_url} alt = "" className = "RestaurantInfo__img" />
-                    <h2 className = "heading-tertiary RestaurantInfo__name">{result.name}</h2>
-                    
-                    <p className = "RestaurantInfo__para">
-                    </p>
-                    
-                    <p className = "RestaurantInfo__para">
-                    </p>
+    renderRestaurantInfo() {
+        const RestaurantsList = this.state.results.map((result) => {
+            console.log(result.id)
+            return (
+                <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
+                    <div className="row">
+                        <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
+                            <img style={{
+                                margin: "0",
+                                height: "125px",
+                                width: "125px",
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                msTransform: "translate(-50%, -50%)",
+                                transform: "translate(-50%, -50%)"
+                            }}
+                                src={result.image_url} alt="" className="RestaurantInfo__img" />
+                        </div>
+                        <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
+                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }}>{result.name}</h2>
+                        </div>
+                    </div>
 
-                    <img 
-                        src = {require(`../../images/${result.rating}.png`)}
-                        alt = {`yelp ratings: ${result.rating}/5`}
-                        className = "RestaurantInfo__rating"/>
+                    <img
+                        src={require(`../../images/${result.rating}.png`)}
+                        alt={`yelp ratings: ${result.rating}/5`}
+                        className="RestaurantInfo__rating"
+                        style={{ width: "initial" }} />
 
 
-                    <p className = "RestaurantInfo__reviewCount"> Based on {result.review_count} Reviews</p>
-               
-                    <a 
-                        href= {result.url} 
-                        className = "RestaurantInfo__website">
-                            More info on Yelp!
-                    </a>
+                    <p className="RestaurantInfo__reviewCount"> Based on {result.review_count} Reviews</p>
 
-                    
-                </div>  
+                    <Link to="/results"
+                        className={window.location.pathname === "/results" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%", marginTop: "10px" }}>
+                        More Info
+                    </Link>
+
+
+                </div>
             );
         });
 
-        return(
-            <div className="RestaurantList__gallery">{RestaurantList}</div>
+        return (
+            <div className="RestaurantList__gallery">{RestaurantsList}</div>
         )
     }
 
     render() {
         return (
-            
+
             <section className="RestaurantList">
                 {this.state.results.length ? this.renderRestaurantInfo() : this.renderEmptyState()}
 
                 {/*conditional rendering for error state - when this.state.errorState is not true*/}
                 {!!this.state.errorState &&
                     <h1>{this.state.error}</h1>
-                }   
+                }
             </section>
-        )}
+        )
+    }
 
 }
-    
-export default RestaurantList
+
+export default RestaurantList;

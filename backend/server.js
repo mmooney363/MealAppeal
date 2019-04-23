@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const UserRoutes = express.Router();
 const User = require('User');
 const PORT = 4000;
+const UserRoutes = express.Router();
+const User = require('User');
 
 app.use('/Users', UserRoutes);
 app.use(cors());
@@ -28,6 +30,7 @@ UserRoutes.route('/:id').get(function(req, res) {
         res.json(user);
     });
 });
+
 
 UserRoutes.route('/add').post(function(req, res) {
     let user = new User(req.body);
@@ -57,6 +60,7 @@ UserRoutes.route('/update/:id').post(function(req, res) {
             });
     });
 });
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/Users', { useNewUrlParser: true });
 const connection = mongoose.connection;
