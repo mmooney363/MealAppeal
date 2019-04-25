@@ -5,7 +5,7 @@ import "./style.css";
 function Card(props) {
   return (
     <div
-      className="card"
+      className="card cardStyle"
       style={{
         backgroundImage: props.image ? `url(${props.image})` : "none"
       }}

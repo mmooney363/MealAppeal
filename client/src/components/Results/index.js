@@ -1,30 +1,50 @@
 import React from 'react';
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { key } from "../RestaurantList";
 import "./style.css";
+import { Accordion, Button } from 'react-bootstrap';
+
+
 
 function Results() {
-  return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-      <Card.Body>
-        <Card.Title>Resaurants</Card.Title>
-        <Card.Text>
-          picture
-   </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroupItem className="font">Reviews</ListGroupItem>
-        <ListGroupItem className="font"><i className="fas fa-phone-volume"></i>  Call</ListGroupItem>
-        <ListGroupItem className="font"><i className="fas fa-map-signs"></i>  Directions</ListGroupItem>
-        <ListGroupItem className="font"><i className="fas fa-laptop"></i>   Website</ListGroupItem>
-        <ListGroupItem className="font"><i className="fas fa-utensils"></i> Take out</ListGroupItem>
-        <ListGroupItem className="Review comments">Review Comments</ListGroupItem>
-      </ListGroup>
-    </Card>
-  );
+ return (
+
+<Accordion className="accordion">
+ <Card className="resultsCard">
+   <Card.Header>
+     <Accordion.Toggle as={Button} variant="link" eventKey="1">
+     <i class="fas fa-user-edit"></i> Reviews
+     </Accordion.Toggle>
+   </Card.Header>
+ </Card>
+ <Card className="resultsCard">
+   {/* <Card.Header> */}
+     <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+     <i className="fas fa-phone-volume"></i>  Call
+     </Accordion.Toggle>
+   {/* </Card.Header> */}
+   <Accordion.Collapse eventKey="0">
+     <Card.Body>867-5309</Card.Body>
+   </Accordion.Collapse>
+ </Card>
+ <Card className="resultsCard" >
+ {/* I believe adding a class to Card.Header below will allow to style the links */}
+   <Card.Header>
+     <Accordion.Toggle as={Button} variant="link" eventKey="1">
+     <i className="fas fa-map-signs"></i>  Directions
+     </Accordion.Toggle>
+   </Card.Header>
+ </Card>
+ <Card className="resultsCard">
+   <Card.Header>
+     <Accordion.Toggle as={Button} variant="link" eventKey="1">
+     <i className="fas fa-laptop"></i>   Website
+     </Accordion.Toggle>
+   </Card.Header>
+ </Card>
+</Accordion>
+
+ );
 }
 
 export default Results;
