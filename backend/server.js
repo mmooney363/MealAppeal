@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const UserRoutes = express.Router();
-const User = require('./model');
+const User = require('./models');
 const PORT = 3001;
 
 
