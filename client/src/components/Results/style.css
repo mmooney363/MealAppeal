@@ -1,18 +1,18 @@
-.card {
+card {
     width: 18rem;
     color: black;
-}
-
-.list-group-item{
+ }
+ 
+ .list-group-item{
     color: black;
-}
-
-.list-group-flush{
+ }
+ 
+ .list-group-flush{
     color: black;
-
-}
-
-.card {
+ 
+ }
+ 
+ .accordion {
     color: black;
     margin: 0;
     position: absolute;
@@ -20,5 +20,13 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-
-}
+ 
+ }
+ 
+ .resultsCard {
+    /* for styling all result cards */
+ }
+ 
+ .cardText {
+    color: blueviolet;
+ }

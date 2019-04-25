@@ -20,7 +20,7 @@ class RestaurantList extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery) {
             this.setState({
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
