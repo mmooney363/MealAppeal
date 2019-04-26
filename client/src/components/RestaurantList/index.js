@@ -20,7 +20,7 @@ class RestaurantList extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
             this.setState({
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
@@ -62,8 +62,7 @@ class RestaurantList extends Component {
       }
 
     renderRestaurantInfo() {
-        const RestaurantsList = this.state.results.map((result, i ) => {
-            console.log(result.id)
+        const RestaurantsList = this.state.results.map((result, i ) => {  
             return (
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
                     <div className="row">
@@ -81,7 +80,7 @@ class RestaurantList extends Component {
                                 src={result.image_url} alt="" className="RestaurantInfo__img" />
                         </div>
                         <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }}>{result.name}</h2>
+                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }} >{result.name}</h2>
                         </div>
                     </div>
 
@@ -95,14 +94,13 @@ class RestaurantList extends Component {
                     <p className="RestaurantInfo__reviewCount"> Based on {result.review_count} Reviews</p>
 
                     <Link to={{
-                       pathname: "/results",
-                       state: { id: this.state.results[i].id }}}
-                       onClick={this.handleClick.bind(this, i)}
-                       key={i}>
-                       More Info
-                   </Link>
-
-
+                        pathname: "/results",
+                        query: { id: this.state.results[i].id }}}
+                        onClick={this.handleClick.bind(this, i)} 
+                        key={i}>
+                        More Info
+                    </Link>
+                 
                 </div>
             );
         });
