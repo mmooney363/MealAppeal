@@ -56,8 +56,13 @@ class RestaurantList extends Component {
         )
     }
 
+    handleClick = (i) => {
+        console.log(this.state.results[i].id);
+        localStorage.setItem("id", this.state.results[i].id);
+      }
+
     renderRestaurantInfo() {
-        const RestaurantsList = this.state.results.map((result) => {
+        const RestaurantsList = this.state.results.map((result, i ) => {
             console.log(result.id)
             return (
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
@@ -89,10 +94,13 @@ class RestaurantList extends Component {
 
                     <p className="RestaurantInfo__reviewCount"> Based on {result.review_count} Reviews</p>
 
-                    <Link to="/results"
-                        className={window.location.pathname === "/results" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%", marginTop: "10px" }}>
-                        More Info
-                    </Link>
+                    <Link to={{
+                       pathname: "/results",
+                       state: { id: this.state.results[i].id }}}
+                       onClick={this.handleClick.bind(this, i)}
+                       key={i}>
+                       More Info
+                   </Link>
 
 
                 </div>

@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from "react-bootstrap/Card";
 import { key } from "../RestaurantList";
 import "./style.css";
 import { Accordion, Button } from 'react-bootstrap';
 
 
+class Results extends Component {
 
-function Results() {
- return (
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: localStorage.getItem("id")
+    }
+  }
+ 
+  componentDidMount(){
+    console.log(localStorage.getItem("id"))
+ 
+  }
+ 
+  render() {
+    return (
 <Accordion className="accordion">
+<Card className="resultsCard">
+   <Card.Header>
+     <Accordion.Toggle as={Button} variant="link" eventKey="1">
+     Reviews picture
+     </Accordion.Toggle>
+   </Card.Header>
+ </Card>
  <Card className="resultsCard">
    <Card.Header>
      <Accordion.Toggle as={Button} variant="link" eventKey="1">
@@ -44,7 +63,8 @@ function Results() {
  </Card>
 </Accordion>
 
- );
+ )};
 }
+
 
 export default Results;
