@@ -61,7 +61,7 @@ UserRoutes.route('/update/:id').post(function(req, res) {
 });
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/Users', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/MealAppeal', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
