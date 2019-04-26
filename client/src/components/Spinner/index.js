@@ -20,18 +20,7 @@ class Spinner extends Component {
 
 
   componentDidMount() {
-    
     this.getRestaurants();
-}
-
-componentDidUpdate(prevProps, prevState) {
-    if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
-        this.setState({
-            results: [],
-        }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
-    }
-
-
 }
 
 

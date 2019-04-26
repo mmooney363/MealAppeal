@@ -6,6 +6,7 @@ import Restaurant from "./pages/Restaurant";
 import FilterPage from "./pages/FilterPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Saved from "./pages/Saved";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
           <Route exact path="/search" component={Search} />
           <Route exact path="/results" component={Restaurant} />
           <Route exact path="/filter" component={FilterPage} />
-          <Route exact path="/SignIn" component={SignIn} />
-          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/signIn" component={SignIn} />
+          <Route exact path="/signUp" component={SignUp} />
+          <Route exact path="/saved" component={Saved} />
       </div>
     </Router>
   );
