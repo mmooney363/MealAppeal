@@ -57,7 +57,6 @@ class RestaurantList extends Component {
     }
 
     handleClick = (i) => {
-        console.log(this.state.results[i].id);
         localStorage.setItem("id", this.state.results[i].id);
       }
 
@@ -95,7 +94,7 @@ class RestaurantList extends Component {
 
                     <Link to={{
                         pathname: "/results",
-                        query: { id: this.state.results[i].id }}}
+                        state: { id: this.state.results[i].id }}}
                         onClick={this.handleClick.bind(this, i)} 
                         key={i}>
                         More Info
