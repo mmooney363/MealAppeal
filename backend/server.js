@@ -5,7 +5,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const UserRoutes = express.Router();
 const User = require('./models');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+
 
 
 app.use('/Users', UserRoutes);
@@ -13,6 +14,23 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+// DB Config
+const db = require('./config/keys').mongoURI;
+
+//Connect to Mongo
+mongoose.connect(db, { useNewUrlParser: true });
+const connection = mongoose.connection;
+
+
+connection.once('open', function() {
+    console.log("MongoDB database connection established successfully");
+})
+
+app.listen(PORT, function() {
+    console.log("Server is running on Port: " + PORT);
+});
+
+//Routes
 UserRoutes.route('/').get(function(req, res) {
     User.find(function(err, Users) {
         if (err) {
@@ -58,16 +76,4 @@ UserRoutes.route('/update/:id').post(function(req, res) {
                 res.status(400).send("Update not possible");
             });
     });
-});
-
-
-mongoose.connect('mongodb://localhost:27017/MealAppeal', { useNewUrlParser: true });
-const connection = mongoose.connection;
-
-connection.once('open', function() {
-    console.log("MongoDB database connection established successfully");
-})
-
-app.listen(PORT, function() {
-    console.log("Server is running on Port: " + PORT);
 });
