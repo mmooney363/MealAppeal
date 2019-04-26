@@ -56,13 +56,13 @@ class RestaurantList extends Component {
         )
     }
 
-
     handleClick = (i) => {
         console.log(this.state.results[i].id);
+        localStorage.setItem("id", this.state.results[i].id);
       }
 
     renderRestaurantInfo() {
-        const RestaurantsList = this.state.results.map((result, i) => {
+        const RestaurantsList = this.state.results.map((result, i ) => {  
             return (
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
                     <div className="row">
@@ -100,8 +100,7 @@ class RestaurantList extends Component {
                         key={i}>
                         More Info
                     </Link>
-                    
-
+                 
                 </div>
             );
         });
