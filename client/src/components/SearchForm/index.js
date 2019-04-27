@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './style.css';
 
 class SearchForm extends Component {
     constructor() {
@@ -45,6 +45,7 @@ class SearchForm extends Component {
                     onChange = {this.handleSearchChange}
                     className = 'searchForm__input'
                     style = {{height: "20px"}}
+                    required
                     />
                     <input 
                     type = 'text'
@@ -52,7 +53,7 @@ class SearchForm extends Component {
                     name = 'searchFoodQuery'
                     placeholder = 'Enter Food'
                     value = {this.state.searchFoodQuery}
-                    onChange = {this.handleSearchChange}
+                    onChange = {this.handleSearchChange} 
                     className = 'searchForm__Foodinput'
                     style = {{height: "20px"}}
                     />
