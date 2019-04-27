@@ -24,6 +24,7 @@ $(document).ready(function(){
 		/*let's make the spin btn to tilt every
 		time the edge of the section hits 
 		the indicator*/
+
 		$('#wheel .sec').each(function(){
 			var t = $(this);
 			var noY = 0;
@@ -68,5 +69,7 @@ $(document).ready(function(){
 	
 	
 });//DOCUMENT READY
+
+
 	
 
