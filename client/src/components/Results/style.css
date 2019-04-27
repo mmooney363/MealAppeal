@@ -15,18 +15,24 @@ card {
  .accordion {
     color: black;
     margin: 0;
-    position: absolute;
+    position: fixed;
+    width: 240px ;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    
  
  }
  
  .resultsCard {
-    /* for styling all result cards */
+ 
  }
  
- .cardText {
-    color: blueviolet;
- }
+ .btn-link {
+   font-weight: 400;
+   color: black;
+   text-decoration: none;
+   text-align: left;
+}
+
