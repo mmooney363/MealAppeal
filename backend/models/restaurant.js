@@ -9,6 +9,6 @@ let restuarantSchema = new Schema({
    
 });
 
-const Restaurant = mongoose.model('restaurant', restuarantSchema);
+const Restaurant = mongoose.model('Restaurant', restuarantSchema);
 
 module.exports = Restaurant;
