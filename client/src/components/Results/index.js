@@ -11,53 +11,58 @@ class Results extends Component {
     super(props);
     this.state = {
       results: [],
+      reviews: [],
       errorState: null
     }
   }
 
   componentDidMount() {
 
-    // this.getRestaurants();
+    this.getRestaurants();
     console.log("results component")
-    console.log(this.props.state.state.id)
+    // console.log(this.props.state.state.id)
   }
 
-  //   getRestaurants = () => {
-  //     this.setState({ loading: true })
+  renderEmptyState() {
+    return (
+      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
+    )
+  }
 
-  //     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/matches?yelp_business_id=${this.props.state.id}`, {
-  //         headers: {
-  //             Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
-  //         },
-  //         params: {
-  //             limit: 1
-  //         }
-  //     }).then((res) => {
-  //             console.log(res.data.businesses)
-  //             this.setState({ results: res.data.businesses })
-  //         })
-  //         .catch((err) => {
-  //             this.setState({ errorState: "Sorry" })
-  //         })
-  // }
+  getRestaurants = () => {
+    this.setState({ loading: true })
 
-  render() {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.state.state.id.id}/reviews`, {
+      headers: {
+        Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
+      }
+    }).then((res) => {
+      // console.log(res.data.reviews)
+      this.setState({ reviews: res.data.reviews })
+      console.log(this.state.reviews[0].text)
+    })
+      .catch((err) => {
+        this.setState({ errorState: "Sorry" })
+      })
+  }
+
+  renderBusiness = () => {
     return (
       <Accordion className="accordion">
         <Card className="resultsCard">
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
-            <img style={{
-                                margin: "0",
-                                height: "125px",
-                                width: "125px",
-                                position: "absolute",
-                                top: "50%",
-                                left: "50%",
-                                msTransform: "translate(-50%, -50%)",
-                                transform: "translate(-50%, -50%)"
-                            }}
-                                src={this.props.state.state.id.image_url} alt="" className="RestaurantInfo__img" />
+              <img style={{
+                margin: "0",
+                height: "125px",
+                width: "125px",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                msTransform: "translate(-50%, -50%)",
+                transform: "translate(-50%, -50%)"
+              }}
+                src={this.props.state.state.id.image_url} alt="" className="RestaurantInfo__img" />
             </Accordion.Toggle>
             <br></br>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
@@ -69,6 +74,9 @@ class Results extends Component {
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
               <i className="fas fa-user-edit"></i> Reviews
+              <div>{this.state.reviews[0].text}</div>
+              {/* <div>{this.state.reviews[1].text}</div>
+              <div>{this.state.reviews[2].text}</div> */}
             </Accordion.Toggle>
           </Card.Header>
         </Card>
@@ -98,6 +106,19 @@ class Results extends Component {
           </Card.Header>
         </Card>
       </Accordion>
+    )
+  }
+
+  render() {
+    return (
+      <section className="RestaurantList">
+        {this.state.reviews.length ? this.renderBusiness() : this.renderEmptyState()}
+
+        {/*conditional rendering for error state - when this.state.errorState is not true*/}
+        {!!this.state.errorState &&
+          <h1>{this.state.error}</h1>
+        }
+      </section>
 
     )
   };

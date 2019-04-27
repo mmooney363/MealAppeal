@@ -8,8 +8,8 @@ import Container from "../components/Container";
 class Restaurant extends Component {
   constructor(props) {
     super(props);
-    console.log("restaurant page")
-    console.log(this.props.location.state.id)
+    // console.log("restaurant page")
+    // console.log(this.props.location.state.id)
   }
   render(){
     return (
