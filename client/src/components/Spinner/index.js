@@ -5,6 +5,21 @@ import { Link } from "react-router-dom";
 import Winner from "../Winner";
 import "./style.css";
 
+// document.getElementById("spin").onclick(function(){
+//   switch (localStorage.getItem("degree")) {
+//     case (localStorage.getItem("degree") > 0 & localStorage.getItem("degree")<= 60):
+//     console.log(this.state.result[0]);
+//     break;
+//     case (localStorage.getItem("degree") > 60 & localStorage.getItem("degree") <= 120):
+//     console.log(this.state.result[0]);
+//     break;
+
+
+//     default: console.log("spin");
+//   }
+// })
+
+
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 class Spinner extends Component {
@@ -16,16 +31,15 @@ class Spinner extends Component {
       results: [],
       errorState: null,
       loading: false,
-      FinalResults: []
+      FinalResults: [],
     };
+    console.log(this)
   }
 
-
+  
   componentDidMount() {
     this.getRestaurants();
   }
-
-
 
   getRestaurants = () => {
     this.setState({ loading: true })
@@ -44,7 +58,10 @@ class Spinner extends Component {
           Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
         },
         params: {
-          limit: 30
+          limit: 20,
+          category: {
+            parent_aliases: "restaurants"
+          }
         }
       }).then((res) => {
         console.log(res.data.businesses)
@@ -65,7 +82,7 @@ class Spinner extends Component {
 
   renderEmptyState() {
     return (
-      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
+      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Press the Spin button to select a random restaurant!</h2>
     )
   }
 
@@ -81,17 +98,18 @@ class Spinner extends Component {
   }
 
   renderSpinner() {
-
+    localStorage.getItem("degree");
+    console.log(localStorage.getItem("degree"))
     const SpinResults = this.RandomResults(this.state.results);
     const FinalResults = SpinResults.slice(0, 6).map((result) => {
-      return (
+        return (
         <div className="sec" key={result.id}></div>
       )
     });
-
+    
     return (
       <div id="wrapper">
-        <Winner />
+      {this.state.results.length ? <Winner result={this.state.results}/> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}

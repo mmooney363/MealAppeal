@@ -5,7 +5,7 @@ import "./style.css";
 import { Accordion, Button } from 'react-bootstrap';
 
 
-class Results extends Component {
+class SpinResult extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ class Results extends Component {
 
     this.getRestaurants();
     // console.log("results component")
-    // console.log(this.props.state)
+    console.log(this.props.state.state)
   }
 
   renderEmptyState() {
@@ -124,4 +124,4 @@ class Results extends Component {
 }
 
 
-export default Results;
+export default SpinResult;

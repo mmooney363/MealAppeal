@@ -18,8 +18,10 @@ $(document).ready(function(){
     then add to the new degree*/
 		var newDegree = degree*clicks;
 		var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+		console.log("extraDegree:" + extraDegree);
 		const totalDegree = newDegree+extraDegree;
-		console.log("totalDegree:" + totalDegree);
+		const finalDegree = totalDegree - newDegree;
+		localStorage.setItem("degree", finalDegree);
 		
 		/*let's make the spin btn to tilt every
 		time the edge of the section hits 
@@ -60,7 +62,7 @@ $(document).ready(function(){
 			});
 		 
 			noY = t.offset().top;
-			console.log("noY:" + noY);
+			
 			
 		});
 	});
