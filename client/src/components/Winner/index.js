@@ -9,13 +9,29 @@ class Winner extends Component {
     super(props);
     console.log(this.props);
     this.state = {
-      results: []
+      results: [],
+      hidden: "hidden"
     }
   }
 
-  componentDidMount(){
-    this.getRestaurants();
+  getInitialState () {
+    return({hidden : "hidden"});
+}
+
+  show = function () {
+    this.setState({ hidden: "" });
   }
+
+  componentWillMount() {
+    this.getRestaurants();
+    var that = this;
+    console.log(that.props);
+    setTimeout(function () {
+      that.show();
+    }, that.props.wait);
+  }
+
+
 
 
   getRestaurants = () => {
@@ -34,12 +50,13 @@ class Winner extends Component {
       })
   }
 
-  
+
 
   renderWinner() {
+
     return (
-      <div className="RestaurantList__gallery">
-        <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={this.props.result.id}>
+      <div className={`${this.state.hidden} RestaurantList__gallery`}>
+        <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "20px" }} key={this.props.result.id}>
           <div className="row">
             <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
               <img style={{
@@ -50,32 +67,34 @@ class Winner extends Component {
                 top: "50%",
                 left: "50%",
                 msTransform: "translate(-50%, -50%)",
-                transform: "translate(-50%, -50%)"
+                transform: "translate(-50%, -50%)",
+                border: "solid 2px #3DA5D9"
               }}
                 src={this.props.result.image_url} alt="" className="RestaurantInfo__img" />
+            </div>
+            <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
+              <h2 className="heading-tertiary RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
+            </div>
           </div>
-          <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
-          </div>
-        </div>
 
-        <img
-          src={require(`../../images/${this.props.result.rating}.png`)}
-          alt={`yelp ratings: ${this.props.result.rating}/5`}
-          className="RestaurantInfo__rating"
-          style={{ width: "initial" }} />
+          <img
+            src={require(`../../images/${this.props.result.rating}.png`)}
+            alt={`yelp ratings: ${this.props.result.rating}/5`}
+            className="RestaurantInfo__rating"
+            style={{ width: "initial" }} />
 
 
-        <p className="RestaurantInfo__reviewCount"> Based on {this.props.result.review_count} Reviews</p>
+          <p className="RestaurantInfo__reviewCount"> Based on {this.props.result.review_count} Reviews</p>
 
-        <Link to={{
-          pathname: "/spinresult",
-          state: { id: this.props.result }
-        }}>
-          More Info
+          <Link to={{
+            pathname: "/spinresult",
+            state: { id: this.props.result }
+          }}
+            style={{ width: "65%", display: "block", margin: "auto", position: "relative", bottom: "10px" }}>
+            More Info
         </Link>
 
-      </div>
+        </div>
       </div>
     );
   }
@@ -88,6 +107,7 @@ class Winner extends Component {
 
 
   render() {
+    console.log(this.props.result)
     return (
       <section className="RestaurantList">
         {this.renderWinner()}

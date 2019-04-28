@@ -24,11 +24,10 @@ a{
 }
 
 
-
 /*WRAPPER*/
 #wrapper{ 
 	margin: 40px auto 0;	
-	width:266px; 
+	width:100%; 
 	position:relative;
 }
 
@@ -176,8 +175,9 @@ a{
 	content:"SPIN";	
 	text-align:center;
 	line-height:68px;
-	color:#CCC;
-	text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0,0,0,0.3) ;
+	color:#3DA5D9CC;
+	font-weight: bold;
+	text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0,0,0,0.1) ;
 	position: relative;
 	z-index: 100000;
 	width:68px;

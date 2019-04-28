@@ -16,11 +16,11 @@ class RestaurantList extends Component {
     }
 
     componentDidMount() {
-        this.getRestaurants("19146")
+        this.getRestaurants("Philadelphia, PA");
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
             this.setState({
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
@@ -33,37 +33,31 @@ class RestaurantList extends Component {
     getRestaurants = (locationSearched, foodType) => {
         this.setState({ loading: true })
 
-
-        if (!locationSearched) {
-
-            alert("Please enter a location")
-
-        } else {
-            axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
-                headers: {
-                    Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
-                },
-                params: {
-                    limit: 6
-                }
+        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
+            headers: {
+                Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
+            },
+            params: {
+                limit: 6
+            }
+        })
+            .then((res) => {
+                // console.log(res.data.businesses)
+                this.setState({ results: res.data.businesses, loading: false })
             })
-                .then((res) => {
-                    console.log(res.data.businesses)
-                    this.setState({ results: res.data.businesses, loading: false })
-                })
-                .catch((err) => {
-                    this.setState({ errorState: "Sorry" })
-                })
-        }
-
+            .catch((err) => {
+                this.setState({ errorState: "Sorry" })
+            })
     }
 
     renderEmptyState() {
-        
+        return (
+            <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Comin' right up! </h2>
+        )
     }
 
     renderRestaurantInfo() {
-        const RestaurantsList = this.state.results.map((result, i) => {
+        const RestaurantsList = this.state.results.map((result, i ) => {  
             return (
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
                     <div className="row">
@@ -76,12 +70,13 @@ class RestaurantList extends Component {
                                 top: "50%",
                                 left: "50%",
                                 msTransform: "translate(-50%, -50%)",
-                                transform: "translate(-50%, -50%)"
+                                transform: "translate(-50%, -50%)",
+                                border: "solid 2px #3DA5D9"
                             }}
                                 src={result.image_url} alt="" className="RestaurantInfo__img" />
                         </div>
                         <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }} >{result.name}</h2>
+                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{result.name}</h2>
                         </div>
                     </div>
 
@@ -96,11 +91,11 @@ class RestaurantList extends Component {
 
                     <Link to={{
                         pathname: "/results",
-                        state: { id: this.state.results[i] }
-                    }}>
+                        state: { id: this.state.results[i] }}}
+                        style={{ width: "65%", display: "block", margin: "auto", position:"relative", bottom: "10px"}}>
                         More Info
                     </Link>
-
+                 
                 </div>
             );
         });
