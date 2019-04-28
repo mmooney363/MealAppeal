@@ -6,6 +6,8 @@ import Winner from "../Winner";
 import "./style.css";
 
 
+var z = 0;
+
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 class Spinner extends Component {
 
@@ -16,16 +18,44 @@ class Spinner extends Component {
       results: [],
       errorState: null,
       loading: false,
-      FinalResults: []
+      FinalResults: [],
+      z: 0
     };
   }
+
+
+  spinPick = () => {
+    const degree = localStorage.getItem("degree");
+    console.log(degree)
+    // .onclick(function () {
+    if (degree > 0 & degree <= 60) {
+      z = 0;
+      console.log(this.state.results[z]);     
+    } else if (degree > 60 & degree <= 120) {
+      z = 1;
+      console.log(this.state.results[z]);      
+    } else if (degree > 120 & degree <= 180) {
+      z = 2
+      console.log(this.state.results[z]);      
+    } else if (degree > 180 & degree <= 240) {
+      z = 3
+      console.log(this.state.results[z]);      
+    } else if (degree > 240 & degree <= 300) {
+      z = 4
+      console.log(this.state.results[z]);     
+    } else if (degree > 300 & degree <= 360) {
+      z = 5
+      console.log(this.state.results[z]);  
+    } else {
+      console.log(this.state.results);
+    }
+  }
+
 
 
   componentDidMount() {
     this.getRestaurants();
   }
-
-
 
   getRestaurants = () => {
     this.setState({ loading: true })
@@ -44,7 +74,10 @@ class Spinner extends Component {
           Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
         },
         params: {
-          limit: 30
+          limit: 20,
+          category: {
+            parent_aliases: "restaurants"
+          }
         }
       }).then((res) => {
         console.log(res.data.businesses)
@@ -65,7 +98,7 @@ class Spinner extends Component {
 
   renderEmptyState() {
     return (
-      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
+      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Press the Spin button to select a random restaurant!</h2>
     )
   }
 
@@ -81,7 +114,8 @@ class Spinner extends Component {
   }
 
   renderSpinner() {
-
+    localStorage.getItem("degree");
+    // console.log(localStorage.getItem("degree"))
     const SpinResults = this.RandomResults(this.state.results);
     const FinalResults = SpinResults.slice(0, 6).map((result) => {
       return (
@@ -91,13 +125,13 @@ class Spinner extends Component {
 
     return (
       <div id="wrapper">
-        <Winner />
+        {this.state.results.length ? <Winner result={this.state.results[z]} /> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}
           </div>
 
-          <div id="spin">
+          <div id="spin" onClick={this.spinPick}>
             <div id="inner-spin"></div>
           </div>
 
@@ -107,7 +141,7 @@ class Spinner extends Component {
         <Link to="/search"
           className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%" }}>
           Want something more specific?
-      </Link>
+        </Link>
       </div>
     )
 

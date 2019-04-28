@@ -1,0 +1,38 @@
+card {
+    width: 18rem;
+    color: black;
+ }
+ 
+ .list-group-item{
+    color: black;
+ }
+ 
+ .list-group-flush{
+    color: black;
+ 
+ }
+ 
+ .accordion {
+    color: black;
+    margin: 0;
+    position: fixed;
+    width: 240px ;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+ 
+ }
+ 
+ .resultsCard {
+ 
+ }
+ 
+ .btn-link {
+   font-weight: 400;
+   color: black;
+   text-decoration: none;
+   text-align: left;
+}
+

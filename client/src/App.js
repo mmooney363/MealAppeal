@@ -6,6 +6,7 @@ import Restaurant from "./pages/Restaurant";
 import FilterPage from "./pages/FilterPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import RestaurantTwo from "./pages/RestaurantTwo.js";
 import Saved from "./pages/Saved";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/signIn" component={SignIn} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/saved" component={Saved} />
+          <Route exact path="/spinresult" component={RestaurantTwo} />
       </div>
     </Router>
   );

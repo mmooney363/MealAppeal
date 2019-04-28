@@ -16,11 +16,11 @@ class RestaurantList extends Component {
     }
 
     componentDidMount() {
-        this.getRestaurants("Philadelphia, PA");
+        this.getRestaurants("19146")
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery) {
             this.setState({
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
@@ -33,31 +33,37 @@ class RestaurantList extends Component {
     getRestaurants = (locationSearched, foodType) => {
         this.setState({ loading: true })
 
-        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
-            headers: {
-                Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
-            },
-            params: {
-                limit: 6
-            }
-        })
-            .then((res) => {
-                console.log(res.data.businesses)
-                this.setState({ results: res.data.businesses, loading: false })
+
+        if (!locationSearched) {
+
+            alert("Please enter a location")
+
+        } else {
+            axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
+                headers: {
+                    Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
+                },
+                params: {
+                    limit: 6
+                }
             })
-            .catch((err) => {
-                this.setState({ errorState: "Sorry" })
-            })
+                .then((res) => {
+                    console.log(res.data.businesses)
+                    this.setState({ results: res.data.businesses, loading: false })
+                })
+                .catch((err) => {
+                    this.setState({ errorState: "Sorry" })
+                })
+        }
+
     }
 
     renderEmptyState() {
-        return (
-            <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Comin' right up! </h2>
-        )
+        
     }
 
     renderRestaurantInfo() {
-        const RestaurantsList = this.state.results.map((result, i ) => {  
+        const RestaurantsList = this.state.results.map((result, i) => {
             return (
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
                     <div className="row">
@@ -90,10 +96,11 @@ class RestaurantList extends Component {
 
                     <Link to={{
                         pathname: "/results",
-                        state: { id: this.state.results[i] }}}>
+                        state: { id: this.state.results[i] }
+                    }}>
                         More Info
                     </Link>
-                 
+
                 </div>
             );
         });

@@ -12,6 +12,22 @@ card {
  
  }
  
+ /* manages top accordion block */
+.restaurantShow {
+   padding: 0px;
+   overflow: inherit;
+   background-color: rgba(0,0,0,.03);
+   border: 0px;
+   border-bottom-color: transparent;
+   border-bottom: none;
+}
+
+.restaurantName{
+   background-color:rgba(0,0,0,.03);
+   padding: 3px;
+
+}
+
  .accordion {
     color: black;
     margin: 0;
@@ -21,13 +37,10 @@ card {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    
- 
+    background-color: rgba(0,0,0,.03);
+   
  }
  
- .resultsCard {
- 
- }
  
  .btn-link {
    font-weight: 400;
@@ -36,3 +49,11 @@ card {
    text-align: left;
 }
 
+/* manages the reviews */
+.scroll {
+   max-height: 200px;
+   overflow-y: auto;
+   padding: 8px 2px 2px 2px;
+   background-color: rgba(0,0,0,.03);
+
+}

@@ -9,9 +9,7 @@ let userSchema = new Schema({
     user_password: {
         type: String
     },
-    user_id: {
-        type: String
-    }
+    faved_restaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }]
     
 });
 
