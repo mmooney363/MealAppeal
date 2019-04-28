@@ -16,30 +16,41 @@ class RestaurantList extends Component {
     }
 
     componentDidMount() {
-        this.getRestaurants("19146")
+        
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery) {
+        if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery || this.props.fPrices !== prevProps.fPrices || this.props.fRating !== prevProps.fRating) {
             this.setState({
                 results: [],
-            }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery))
+            }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery, this.props.fPrices, this.props.fRating))
         }
 
 
     }
 
 
-    getRestaurants = (locationSearched, foodType) => {
+    getRestaurants = (locationSearched, foodType, fPrice, fRating) => {
         this.setState({ loading: true })
 
-
-        if (!locationSearched) {
-
-            alert("Please enter a location")
-
-        } else {
+        if (!fRating) {
             axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}`, {
+            headers: {
+                Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
+            },
+            params: {
+                limit: 6
+            }
+        })
+            .then((res) => {
+                console.log(res.data.businesses)
+                this.setState({ results: res.data.businesses, loading: false })
+            })
+            .catch((err) => {
+                this.setState({ errorState: "Sorry" })
+            })
+        } else {
+            axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}&term=${foodType}&price=${fPrice}&sort_by=${fRating}`, {
                 headers: {
                     Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
                 },
@@ -55,7 +66,6 @@ class RestaurantList extends Component {
                     this.setState({ errorState: "Sorry" })
                 })
         }
-
     }
 
     renderEmptyState() {

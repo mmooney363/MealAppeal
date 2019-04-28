@@ -11,15 +11,18 @@ class App extends Component {
     super(props);
     this.state = {
       searchLocationQuery: null,
-      searchFoodQuery: null
+      searchFoodQuery: null,
+      fPrices: null,
+      fRating: null
     };
   }
 
-  onFormSubmit = (searchLocationQuery, searchFoodQuery) => {
+  onFormSubmit = (searchLocationQuery, searchFoodQuery, fPrices, fRating) => {
     this.setState({
       searchLocationQuery: searchLocationQuery,
-      searchFoodQuery: searchFoodQuery
-
+      searchFoodQuery: searchFoodQuery,
+      fPrices: fPrices,
+      fRating: fRating
     })
   }
 
@@ -32,7 +35,9 @@ class App extends Component {
         <Search />
         <RestaurantList 
           searchLocationQuery = {this.state.searchLocationQuery}
-          searchFoodQuery = {this.state.searchFoodQuery}/> 
+          searchFoodQuery = {this.state.searchFoodQuery}
+          fPrices = {this.state.fPrices}
+          fRating = {this.state.fRating}/> 
         <Footer />
       </div>
     );
