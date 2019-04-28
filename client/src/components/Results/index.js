@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import "./style.css";
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion, Button, } from 'react-bootstrap';
+
 
 
 class Results extends Component {
@@ -49,57 +50,61 @@ class Results extends Component {
     return (
       <Accordion className="accordion">
         <Card className="resultsCard">
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              <img style={{
+          <Card.Header className="restaurantShow">
+          <br></br>
+
+
+        <Accordion.Toggle as={Button} className="restaurantShow" variant="link" eventKey="0">
+          <Card style={{ width: '18rem' }}>
+            <Card.Img style={{
                 margin: "0",
                 height: "125px",
-                width: "125px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                msTransform: "translate(-50%, -50%)",
-                transform: "translate(-50%, -50%)"
+                width: "100%",
               }}
+
                 src={this.props.state.state.id.image_url} alt="" className="RestaurantInfo__img" />
-            </Accordion.Toggle>
-            <br></br>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              {this.props.state.state.id.name}
+            <Card.Body className="restaurantName">
+              <Card.Title>{this.props.state.state.id.name}</Card.Title>
+
+            </Card.Body>
+          </Card>
+
             </Accordion.Toggle>
           </Card.Header>
         </Card>
+
+
+
         <Card className="resultsCard">
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
               <i className="fas fa-user-edit"></i> Reviews
-              <div>{this.state.reviews[0].text}</div>
-              {/* <div>{this.state.reviews[1].text}</div>
-              <div>{this.state.reviews[2].text}</div> */}
+              <Accordion.Collapse eventKey="1">
+
+   
+            <Card.Body className="scroll">
+              {this.state.reviews[0].text}
+              {this.state.reviews[1].text}
+              {this.state.reviews[2].text}
+            </Card.Body>
+  
+          </Accordion.Collapse>
             </Accordion.Toggle>
           </Card.Header>
         </Card>
         <Card className="resultsCard">
           {/* <Card.Header> */}
-          <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
             <i className="fas fa-phone-volume"></i>  Call
           </Accordion.Toggle>
           {/* </Card.Header> */}
-          <Accordion.Collapse eventKey="0">
+          <Accordion.Collapse eventKey="2">
             <Card.Body>{this.props.state.state.id.phone}</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card className="resultsCard" >
-          {/* I believe adding a class to Card.Header below will allow to style the links */}
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              <i className="fas fa-map-signs"></i>  Directions
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
         <Card className="resultsCard">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+            <Accordion.Toggle as={Button} variant="link" eventKey="3">
               <i className="fas fa-laptop"></i>   Website
             </Accordion.Toggle>
           </Card.Header>
