@@ -26,11 +26,14 @@ class SignUp extends Component {
   
       <div class="clearfix">
         <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" onClick={() => { History.push('/Users/add') }} class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn"> Sign Up </button>
+
       </div>
     </div>
-  </form>
-  </div>
+    </form>
+    </div>
+    
+  
   
   );
 }
