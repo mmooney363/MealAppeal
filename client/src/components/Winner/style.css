@@ -1,12 +1,42 @@
-.jumbotron {
+/* .jumbotron {
   margin-top: 15%;
   margin-bottom: 20%;
   padding: 40px 25px;
+} */
+
+.RestaurantInfo__img {
+  display: block;
+  width: 25%;
+  height: 10%;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.RestaurantInfo {
+  text-align: center;
+  background:rgb(211,211,211, .50);
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.RestaurantInfo_name {
+  font-size: auto;
+}
 
-.display-4{
+.hidden {
+  display: none
+}
+
+.h2, h2 {
+  font-size: 6.5vw;
+}
+
+.moreInfo {
+  margin-top:10%;
+}
+/* .display-4{
   margin-bottom: 0px;
   font-size:24px;
-}
+} */

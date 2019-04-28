@@ -22,7 +22,7 @@ connection.once("open", function() {
   console.log("MongoDB database connection established successfully");
 });
 
-app.listen(PORT, function() {
+app.listen(process.env.PORT || PORT, function() {
   console.log("Server is running on Port: " + PORT);
 });
 

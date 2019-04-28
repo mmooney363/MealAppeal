@@ -6,7 +6,7 @@ import Winner from "../Winner";
 import "./style.css";
 
 
-var z = 0;
+
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 class Spinner extends Component {
@@ -28,26 +28,26 @@ class Spinner extends Component {
     const degree = localStorage.getItem("degree");
     console.log(degree)
     // .onclick(function () {
-    if (degree > 0 & degree <= 60) {
-      z = 0;
-      console.log(this.state.results[z]);     
-    } else if (degree > 60 & degree <= 120) {
-      z = 1;
-      console.log(this.state.results[z]);      
-    } else if (degree > 120 & degree <= 180) {
-      z = 2
-      console.log(this.state.results[z]);      
-    } else if (degree > 180 & degree <= 240) {
-      z = 3
-      console.log(this.state.results[z]);      
-    } else if (degree > 240 & degree <= 300) {
-      z = 4
-      console.log(this.state.results[z]);     
-    } else if (degree > 300 & degree <= 360) {
-      z = 5
-      console.log(this.state.results[z]);  
+    if (degree > 0 & degree <= 30 || degree > 330 & degree <= 360) {
+      this.setState({z: 0});
+      // console.log(this.state.results[this.state.z]);     
+    } else if (degree > 30 & degree <= 90) {
+      this.setState({z: 1});
+      // console.log(this.state.results[this.state.z]);      
+    } else if (degree > 90 & degree <= 150) {
+      this.setState({z: 2});
+      // console.log(this.state.results[this.state.z]);      
+    } else if (degree > 150 & degree <= 210) {
+      this.setState({z: 3});
+      // console.log(this.state.results[this.state.z]);      
+    } else if (degree > 210 & degree <= 270) {
+      this.setState({z: 4});
+      // console.log(this.state.results[this.state.z]);     
+    } else if (degree > 270 & degree <= 330) {
+      this.setState({z: 5});
+      // console.log(this.state.results[this.state.z]);  
     } else {
-      console.log(this.state.results);
+      console.log("nothing");
     }
   }
 
@@ -125,7 +125,7 @@ class Spinner extends Component {
 
     return (
       <div id="wrapper">
-        {this.state.results.length ? <Winner result={this.state.results[z]} /> : this.renderEmptyState()}
+        {this.state.results.length ? <Winner wait={10000} result={this.state.results[this.state.z]} /> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}
@@ -139,7 +139,7 @@ class Spinner extends Component {
           <div id="txt"></div>
         </div>
         <Link to="/search"
-          className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%" }}>
+          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{ width: "85%", marginLeft: "auto", marginRight: "auto" }}>
           Want something more specific?
         </Link>
       </div>
