@@ -18,7 +18,7 @@ $(document).ready(function(){
     then add to the new degree*/
 		var newDegree = degree*clicks;
 		var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
-		console.log("extraDegree:" + extraDegree);
+		// console.log("extraDegree:" + extraDegree);
 		const totalDegree = newDegree+extraDegree;
 		const finalDegree = totalDegree - newDegree;
 		localStorage.setItem("degree", finalDegree);
@@ -70,5 +70,3 @@ $(document).ready(function(){
 	
 	
 });//DOCUMENT READY
-	
-
