@@ -20,7 +20,7 @@ class Winner extends Component {
 
   getRestaurants = () => {
     this.setState({ loading: true })
-    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.result[0].id}/reviews`, {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.result.id}/reviews`, {
       headers: {
         Authorization: `Bearer ${'jfKBdYwg2HcVvonXCl5dzGyumNbjmyezKnEVZ17MLE3mqWJX5UG__z0Zz9darrUiD8Eb8j6a0vg90MJuBZC58wRwOfbm_BzSXD0Q7_j4DaNzlFsHWovPzN_TihutXHYx'}`
       }
@@ -34,10 +34,12 @@ class Winner extends Component {
       })
   }
 
+  
+
   renderWinner() {
     return (
       <div className="RestaurantList__gallery">
-        <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={this.props.result[0].id}>
+        <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={this.props.result.id}>
           <div className="row">
             <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
               <img style={{
@@ -50,25 +52,25 @@ class Winner extends Component {
                 msTransform: "translate(-50%, -50%)",
                 transform: "translate(-50%, -50%)"
               }}
-                src={this.props.result[0].image_url} alt="" className="RestaurantInfo__img" />
+                src={this.props.result.image_url} alt="" className="RestaurantInfo__img" />
           </div>
           <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }} >{this.props.result[0].name}</h2>
+            <h2 className="heading-tertiary RestaurantInfo__name" style={{ lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
           </div>
         </div>
 
         <img
-          src={require(`../../images/${this.props.result[0].rating}.png`)}
-          alt={`yelp ratings: ${this.props.result[0].rating}/5`}
+          src={require(`../../images/${this.props.result.rating}.png`)}
+          alt={`yelp ratings: ${this.props.result.rating}/5`}
           className="RestaurantInfo__rating"
           style={{ width: "initial" }} />
 
 
-        <p className="RestaurantInfo__reviewCount"> Based on {this.props.result[0].review_count} Reviews</p>
+        <p className="RestaurantInfo__reviewCount"> Based on {this.props.result.review_count} Reviews</p>
 
         <Link to={{
           pathname: "/spinresult",
-          state: { id: this.props.result[0] }
+          state: { id: this.props.result }
         }}>
           More Info
         </Link>

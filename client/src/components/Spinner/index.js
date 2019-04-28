@@ -5,21 +5,8 @@ import { Link } from "react-router-dom";
 import Winner from "../Winner";
 import "./style.css";
 
-// document.getElementById("spin").onclick(function(){
-//   switch (localStorage.getItem("degree")) {
-//     case (localStorage.getItem("degree") > 0 & localStorage.getItem("degree")<= 60):
-//     console.log(this.state.result[0]);
-//     break;
-//     case (localStorage.getItem("degree") > 60 & localStorage.getItem("degree") <= 120):
-//     console.log(this.state.result[0]);
-//     break;
 
-
-//     default: console.log("spin");
-//   }
-// })
-
-
+var z = 0;
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 class Spinner extends Component {
@@ -32,11 +19,40 @@ class Spinner extends Component {
       errorState: null,
       loading: false,
       FinalResults: [],
+      z: 0
     };
-    console.log(this)
   }
 
-  
+
+  spinPick = () => {
+    const degree = localStorage.getItem("degree");
+    console.log(degree)
+    // .onclick(function () {
+    if (degree > 0 & degree <= 60) {
+      z = 0;
+      console.log(this.state.results[z]);     
+    } else if (degree > 60 & degree <= 120) {
+      z = 1;
+      console.log(this.state.results[z]);      
+    } else if (degree > 120 & degree <= 180) {
+      z = 2
+      console.log(this.state.results[z]);      
+    } else if (degree > 180 & degree <= 240) {
+      z = 3
+      console.log(this.state.results[z]);      
+    } else if (degree > 240 & degree <= 300) {
+      z = 4
+      console.log(this.state.results[z]);     
+    } else if (degree > 300 & degree <= 360) {
+      z = 5
+      console.log(this.state.results[z]);  
+    } else {
+      console.log(this.state.results);
+    }
+  }
+
+
+
   componentDidMount() {
     this.getRestaurants();
   }
@@ -99,23 +115,23 @@ class Spinner extends Component {
 
   renderSpinner() {
     localStorage.getItem("degree");
-    console.log(localStorage.getItem("degree"))
+    // console.log(localStorage.getItem("degree"))
     const SpinResults = this.RandomResults(this.state.results);
     const FinalResults = SpinResults.slice(0, 6).map((result) => {
-        return (
+      return (
         <div className="sec" key={result.id}></div>
       )
     });
-    
+
     return (
       <div id="wrapper">
-      {this.state.results.length ? <Winner result={this.state.results}/> : this.renderEmptyState()}
+        {this.state.results.length ? <Winner result={this.state.results[z]} /> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}
           </div>
 
-          <div id="spin">
+          <div id="spin" onClick={this.spinPick}>
             <div id="inner-spin"></div>
           </div>
 
@@ -125,7 +141,7 @@ class Spinner extends Component {
         <Link to="/search"
           className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"} variant="primary" size="lg" style={{ width: "100%" }}>
           Want something more specific?
-      </Link>
+        </Link>
       </div>
     )
 
