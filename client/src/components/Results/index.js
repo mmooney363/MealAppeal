@@ -6,6 +6,7 @@ import { Accordion, Button, } from 'react-bootstrap';
 
 
 
+
 class Results extends Component {
 
   constructor(props) {
@@ -18,7 +19,6 @@ class Results extends Component {
   }
 
   componentDidMount() {
-
     this.getRestaurants();
     // console.log("results component")
     // console.log(this.props.state)
@@ -29,6 +29,11 @@ class Results extends Component {
       <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
     )
   }
+
+  // $(".heart.fa").click(function() {
+  //   $(this).toggleClass("fa-heart fa-heart-o");
+  // });
+
 
   getRestaurants = () => {
     this.setState({ loading: true })
@@ -51,25 +56,20 @@ class Results extends Component {
       <Accordion className="accordion">
         <Card className="resultsCard">
           <Card.Header className="restaurantShow">
-          <br></br>
-
-
-        <Accordion.Toggle as={Button} className="restaurantShow" variant="link" eventKey="0">
-          <Card style={{ width: '18rem' }}>
-            <Card.Img style={{
-                margin: "0",
-                height: "125px",
-                width: "100%",
-              }}
-
-                src={this.props.state.state.id.image_url} alt="" className="RestaurantInfo__img" />
-            <Card.Body className="restaurantName">
-              <Card.Title>{this.props.state.state.id.name}</Card.Title>
-
-            </Card.Body>
-          </Card>
-
-            </Accordion.Toggle>
+            <Card style={{ width: '100%' }}>
+              <div style={{ position: "static", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover" }}>
+                <div class="heart"></div>
+              </div>
+              <Card.Body className="restaurantName" style={{ textAlign: "center" }}>
+                <Card.Title style={{ fontWeight: "bold", marginBottom: "2px" }}>{this.props.state.state.id.name}</Card.Title>
+                <Card.Title style={{ fontSize: "medium", marginBottom: "2px" }}>{`${this.props.state.state.id.location.display_address[0]}, ${this.props.state.state.id.location.display_address[1]}`}</Card.Title>
+                <img
+                  src={require(`../../images/${this.props.state.state.id.rating}.png`)}
+                  alt={`yelp ratings: ${this.props.state.state.id.rating}/5`}
+                  className="RestaurantInfo__rating"
+                  style={{ width: "70%" }} />
+              </Card.Body>
+            </Card>
           </Card.Header>
         </Card>
 
@@ -81,20 +81,20 @@ class Results extends Component {
               <i className="fas fa-user-edit"></i> Reviews
               <Accordion.Collapse eventKey="1">
 
-   
-            <Card.Body className="scroll">
-              {this.state.reviews[0].text}
-              {this.state.reviews[1].text}
-              {this.state.reviews[2].text}
-            </Card.Body>
-  
-          </Accordion.Collapse>
+
+                <Card.Body className="scroll">
+                  {this.state.reviews[0].text}
+                  {this.state.reviews[1].text}
+                  {this.state.reviews[2].text}
+                </Card.Body>
+
+              </Accordion.Collapse>
             </Accordion.Toggle>
           </Card.Header>
         </Card>
         <Card className="resultsCard">
           {/* <Card.Header> */}
-          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
+          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2" style={{ padding: "12px 32px" }}>
             <i className="fas fa-phone-volume"></i>  Call
           </Accordion.Toggle>
           {/* </Card.Header> */}

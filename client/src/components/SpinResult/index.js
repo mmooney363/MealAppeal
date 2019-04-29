@@ -19,13 +19,13 @@ class SpinResult extends Component {
   componentDidMount() {
 
     this.getRestaurants();
-    // console.log("results component")
+
     console.log(this.props.state.state)
   }
 
   renderEmptyState() {
     return (
-      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
+      <h2 className="heading-tertiary" style={{ textAlign: "center", marginTop: "30px" }}>One moment please.</h2>
     )
   }
 
@@ -49,57 +49,56 @@ class SpinResult extends Component {
     return (
       <Accordion className="accordion">
         <Card className="resultsCard">
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              <img style={{
-                margin: "0",
-                height: "125px",
-                width: "125px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                msTransform: "translate(-50%, -50%)",
-                transform: "translate(-50%, -50%)"
-              }}
-                src={this.props.state.state.id.image_url} alt="" className="RestaurantInfo__img" />
-            </Accordion.Toggle>
-            <br></br>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              {this.props.state.state.id.name}
-            </Accordion.Toggle>
+          <Card.Header className="restaurantShow">
+            <Card style={{ width: '100%' }}>
+              <div style={{ position: "static", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover" }}>
+                <div class="heart"></div>
+              </div>
+              <Card.Body className="restaurantName" style={{ textAlign: "center" }}>
+                <Card.Title style={{ fontWeight: "bold", marginBottom: "2px" }}>{this.props.state.state.id.name}</Card.Title>
+                <Card.Title style={{ fontSize: "medium", marginBottom: "2px" }}>{`${this.props.state.state.id.location.display_address[0]}, ${this.props.state.state.id.location.display_address[1]}`}</Card.Title>
+                <img
+                  src={require(`../../images/${this.props.state.state.id.rating}.png`)}
+                  alt={`yelp ratings: ${this.props.state.state.id.rating}/5`}
+                  className="RestaurantInfo__rating"
+                  style={{ width: "70%" }} />
+              </Card.Body>
+            </Card>
           </Card.Header>
         </Card>
+
+
+
         <Card className="resultsCard">
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
               <i className="fas fa-user-edit"></i> Reviews
-              <div>{this.state.reviews[0].text}</div>
-              {/* <div>{this.state.reviews[1].text}</div>
-              <div>{this.state.reviews[2].text}</div> */}
+              <Accordion.Collapse eventKey="1">
+
+
+                <Card.Body className="scroll">
+                  {this.state.reviews[0].text}
+                  {this.state.reviews[1].text}
+                  {this.state.reviews[2].text}
+                </Card.Body>
+
+              </Accordion.Collapse>
             </Accordion.Toggle>
           </Card.Header>
         </Card>
         <Card className="resultsCard">
           {/* <Card.Header> */}
-          <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2" style={{ padding: "12px 32px" }}>
             <i className="fas fa-phone-volume"></i>  Call
           </Accordion.Toggle>
           {/* </Card.Header> */}
-          <Accordion.Collapse eventKey="0">
+          <Accordion.Collapse eventKey="2">
             <Card.Body>{this.props.state.state.id.phone}</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card className="resultsCard" >
-          {/* I believe adding a class to Card.Header below will allow to style the links */}
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              <i className="fas fa-map-signs"></i>  Directions
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
         <Card className="resultsCard">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+            <Accordion.Toggle as={Button} variant="link" eventKey="3">
               <i className="fas fa-laptop"></i>   Website
             </Accordion.Toggle>
           </Card.Header>
