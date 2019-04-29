@@ -19,6 +19,7 @@ class Spinner extends Component {
       errorState: null,
       loading: false,
       FinalResults: [],
+      clicked: false,
       z: 0
     };
   }
@@ -26,6 +27,7 @@ class Spinner extends Component {
 
   spinPick = () => {
     const degree = localStorage.getItem("degree");
+    this.setState({clicked: true});
     console.log(degree)
     // .onclick(function () {
     if (degree > 0 & degree <= 30 || degree > 330 & degree <= 360) {
@@ -56,6 +58,7 @@ class Spinner extends Component {
   componentDidMount() {
     this.getRestaurants();
   }
+
 
   getRestaurants = () => {
     this.setState({ loading: true })
@@ -125,7 +128,7 @@ class Spinner extends Component {
 
     return (
       <div id="wrapper">
-        {this.state.results.length ? <Winner wait={7500} result={this.state.results[this.state.z]} /> : this.renderEmptyState()}
+        {this.state.results.length && this.state.clicked === true ? <Winner wait={6300} result={this.state.results[this.state.z]} /> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}
