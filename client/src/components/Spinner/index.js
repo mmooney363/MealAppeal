@@ -125,7 +125,7 @@ class Spinner extends Component {
 
     return (
       <div id="wrapper">
-        {this.state.results.length ? <Winner wait={7000} result={this.state.results[this.state.z]} /> : this.renderEmptyState()}
+        {this.state.results.length ? <Winner wait={7500} result={this.state.results[this.state.z]} /> : this.renderEmptyState()}
         <div id="wheel">
           <div id="inner-wheel">
             {FinalResults}

@@ -26,13 +26,9 @@ class Results extends Component {
 
   renderEmptyState() {
     return (
-      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>One moment please.</h2>
+      <h2 className="heading-tertiary" style={{ textAlign: "center", marginTop: "30px" }}>One moment please.</h2>
     )
   }
-
-  // $(".heart.fa").click(function() {
-  //   $(this).toggleClass("fa-heart fa-heart-o");
-  // });
 
 
   getRestaurants = () => {
@@ -57,7 +53,7 @@ class Results extends Component {
         <Card className="resultsCard">
           <Card.Header className="restaurantShow">
             <Card style={{ width: '100%' }}>
-              <div style={{ position: "static", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover" }}>
+              <div style={{ position: "relative", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover" }}>
                 <div class="heart"></div>
               </div>
               <Card.Body className="restaurantName" style={{ textAlign: "center" }}>
