@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import "./style_signIn.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 class SignIn extends Component {
   render() {
   return (
 
     <div>
+    <Header/>
     <form action="/action_page.php">
     <div class="container">
     <h1>Sign In</h1>
@@ -26,6 +29,7 @@ class SignIn extends Component {
     </div>
     </div>
     </form>
+    <Footer/>
     </div>
   
   );
