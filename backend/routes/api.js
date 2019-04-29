@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const UserRoutes = express.Router();
 const User = require('./models/user');
+const Restaurant = require('./models/restaurant')
 
 
 app.use('/Users', UserRoutes);
