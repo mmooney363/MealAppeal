@@ -5,7 +5,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const UserRoutes = express.Router();
 const PORT = process.env.PORT || 3001;
-const routes = require("routes")
+
+//const routes = require("routes")
+
 
 app.use("/Users", UserRoutes);
 app.use(cors());
@@ -15,7 +17,9 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static("/client/build"));
 }
 
-app.use(routes);
+
+//app.use(routes);
+
 
 // DB Config
 const db = require("./config/keys").mongoURI;
