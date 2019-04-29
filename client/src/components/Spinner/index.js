@@ -101,7 +101,7 @@ class Spinner extends Component {
 
   renderEmptyState() {
     return (
-      <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Press the Spin button to select a random restaurant!</h2>
+      <h2 className="heading-tertiary" style={{ textAlign: "center", fontWeight:"bold", backgroundColor:"rgb(211,211,211, .50)", width:"85%", margin:"20px auto" }}>Press the Spin button to select a random restaurant!</h2>
     )
   }
 
@@ -146,7 +146,6 @@ class Spinner extends Component {
         </Link>
       </div>
     )
-
   }
 
   render() {

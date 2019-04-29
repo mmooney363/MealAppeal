@@ -4,7 +4,7 @@ import "./style.css";
 function Header(props) {
   return (
     <div className="page-header text-center">
-      <span>MealAppeal</span> 
+      <span className="title">MealAppeal</span> 
     </div>
   );
 }
