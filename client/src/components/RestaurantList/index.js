@@ -67,7 +67,7 @@ class RestaurantList extends Component {
 
     renderEmptyState() {
         return (
-            <h2 className="heading-tertiary" style={{ textAlign: "center" }}>Comin' right up! </h2>
+            <h2 className="heading-tertiary" style={{ textAlign: "center", backgroundColor:"rgba(211,211,211, .7)", width:"92%", margin: "auto" }}>Please Enter Your Zip Code and Food Choice, then Press Search!</h2>
         )
     }
 
@@ -77,21 +77,10 @@ class RestaurantList extends Component {
                 <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "10px" }} key={result.id}>
                     <div className="row">
                         <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-                            <img style={{
-                                margin: "0",
-                                height: "125px",
-                                width: "125px",
-                                position: "absolute",
-                                top: "50%",
-                                left: "50%",
-                                msTransform: "translate(-50%, -50%)",
-                                transform: "translate(-50%, -50%)",
-                                border: "solid 2px #3DA5D9"
-                            }}
-                                src={result.image_url} alt="" className="RestaurantInfo__img" />
+                            <img className="search-RestaurantInfo__img" src={result.image_url} alt=""  />
                         </div>
                         <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-                            <h2 className="heading-tertiary RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{result.name}</h2>
+                            <h2 className="heading-tertiary search-RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{result.name}</h2>
                         </div>
                     </div>
 
@@ -123,7 +112,7 @@ class RestaurantList extends Component {
     render() {
         return (
 
-            <section className="RestaurantList">
+            <section className="RestaurantList" style={{marginBottom: "70px"}}>
                 {this.state.results.length ? this.renderRestaurantInfo() : this.renderEmptyState()}
 
                 {/*conditional rendering for error state - when this.state.errorState is not true*/}

@@ -9,7 +9,7 @@ class SignUp extends Component {
 
     <div>
       <Header />
-    <form action="/action_page.php">
+    <form action="/action_page.php" style={{marginBottom: "60px"}}>
     <div className="container" style={{backgroundColor:"rgba(211,211,211,.7)"}}>
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
