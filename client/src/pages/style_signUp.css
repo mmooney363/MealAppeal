@@ -12,6 +12,10 @@ input[type=text], input[type=password] {
 
 }
 
+p{
+  background-color: rgba(211,211,211,.5)
+}
+
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
@@ -30,7 +34,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   opacity: 0.9;
 }
 

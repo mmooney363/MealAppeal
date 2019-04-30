@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./style_signIn.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -26,6 +27,10 @@ class SignIn extends Component {
     <div class="clearfix">
     
       <button type="submit" class="signupbtn">Sign In</button>
+      <Link to="/signup"
+          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{backgroundColor:"blue", color:"white", padding:"14px 20px", margin:"8px 0", border:"none", cursor:"pointer", width:"50%", opacity:"0.9", float:"right", fontFamily:"Arial, Helvetica, sans-serif"}}>Sign-up
+        </Link>
+
     </div>
     </div>
     </form>
