@@ -56,35 +56,23 @@ class Winner extends Component {
 
     return (
       <div className={`${this.state.hidden} RestaurantList__gallery`}>
-        <div className="RestaurantInfo" style={{ marginTop: "10px", marginBottom: "20px" }} key={this.props.result.id}>
+        <div className="spin-RestaurantInfo" key={this.props.result.id}>
           <div className="row">
-            <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-              <img style={{
-                margin: "0",
-                height: "125px",
-                width: "125px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                msTransform: "translate(-50%, -50%)",
-                transform: "translate(-50%, -50%)",
-                border: "solid 2px #3DA5D9"
-              }}
-                src={this.props.result.image_url} alt="" className="RestaurantInfo__img" />
+            <div className="col-6 img-container">
+              <img className="spin-RestaurantInfo__img" src={this.props.result.image_url} alt=""  />
             </div>
-            <div className="col-6" style={{ height: "150px", width: "125px", margin: "auto" }}>
-              <h2 className="heading-tertiary RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
+            <div className="col-6 name-container">
+              <h2 className="heading-tertiary spin-RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
             </div>
           </div>
 
           <img
             src={require(`../../images/${this.props.result.rating}.png`)}
             alt={`yelp ratings: ${this.props.result.rating}/5`}
-            className="RestaurantInfo__rating"
-            style={{ width: "initial" }} />
+            className="spin-RestaurantInfo__rating"/>
 
 
-          <p className="RestaurantInfo__reviewCount"> Based on {this.props.result.review_count} Reviews</p>
+          <p className="spin-RestaurantInfo__reviewCount"> Based on {this.props.result.review_count} Reviews</p>
 
           <Link to={{
             pathname: "/spinresult",

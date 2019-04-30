@@ -1,28 +1,42 @@
-/* .jumbotron {
-  margin-top: 15%;
-  margin-bottom: 20%;
-  padding: 40px 25px;
-} */
-
-.RestaurantInfo__img {
-  display: block;
-  width: 25%;
-  height: 10%;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+.img-container{
+  height: 150px;
+  width: 125px;
+  margin: auto;
 }
 
-.RestaurantInfo {
+.name-container{
+  height: 150px;
+  width: 125px;
+  margin: auto;
+}
+
+.spin-RestaurantInfo__img {
+  margin: 0;
+  height: 125px;
+  width: 125px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  --msTransform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: solid 2px #3DA5D9
+}
+
+.spin-RestaurantInfo {
   text-align: center;
   background:rgb(211,211,211, .50);
   width: 85%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom:20px;
 }
 
-.RestaurantInfo_name {
+.spin-RestaurantInfo_name {
   font-size: auto;
+}
+
+.spin-RestaurantInfo__rating {
+  width:initial;
 }
 
 .hidden {
@@ -36,7 +50,46 @@
 .moreInfo {
   margin-top:10%;
 }
-/* .display-4{
-  margin-bottom: 0px;
-  font-size:24px;
-} */
+
+
+/* MEDIA TAGS */
+@media screen and (max-height: 720px){
+  .spin-RestaurantInfo{
+    height: 185px;
+    margin-top:0px;
+    margin-bottom:10px;
+  }
+
+  .img-container{
+    height:75px;
+    width:75px;
+    margin: 20px 0px 0px 0px;
+  }
+
+  .name-container{
+    height:75px;
+    width:75px;
+    margin: -5px 0px 0px 0px;
+  }
+
+  .spin-RestaurantInfo__img{
+    height:75px;
+    width:75px;
+    top:35%
+  }
+
+  .spin-RestaurantInfo__rating {
+    height:30px;
+    width:70%;
+  }
+
+  .spin-RestaurantInfo__reviewCount{
+    margin-bottom: 7px;
+  }
+}
+
+@media screen and (min-height: 1000px){
+  .h2, h2{
+    font-size: 5vw;
+  }
+}

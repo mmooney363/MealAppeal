@@ -49,6 +49,7 @@ class Results extends Component {
 
   renderBusiness = () => {
     return (
+      <div className="holder">
       <Accordion className="accordion">
         <Card className="resultsCard">
           <Card.Header className="restaurantShow">
@@ -106,12 +107,13 @@ class Results extends Component {
           </Card.Header>
         </Card>
       </Accordion>
+      </div>
     )
   }
 
   render() {
     return (
-      <section className="RestaurantList">
+      <section className="result-RestaurantList">
         {this.state.reviews.length ? this.renderBusiness() : this.renderEmptyState()}
 
         {/*conditional rendering for error state - when this.state.errorState is not true*/}

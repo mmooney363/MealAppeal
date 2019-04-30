@@ -281,8 +281,49 @@ opacity:0.1;
 }
 
 
+/*MEDIA TAG*/
 
+@media screen and (max-height: 720px){
 
+	#wheel{
+		height:175px;
+		width: 175px;
+	}
+
+	#wheel:before{
+		height:175px;
+		width:175px;
+		left:-9px;
+		top:0px;
+	}
+
+	#wheel div.sec{
+		left: 2px;
+		top: -50px;
+	}
+}
+
+@media screen and (min-height: 1000px){
+
+	#wheel{
+		height: 400px;
+		width: 400px;
+	}
+
+	#wheel:before{
+		height: 400px;
+		width: 400px;
+		left: -4px;
+		top: -4px;
+	}
+
+	#wheel div.sec{
+		border-width: 200px 120px 0;
+		transform-origin: 120px 200px;
+		left: 75px;
+		top: -8px;
+	}
+}
 
 
 
