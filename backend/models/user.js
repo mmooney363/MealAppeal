@@ -3,17 +3,17 @@ const Schema = mongoose.Schema;
 
 
 let userSchema = new Schema({
-    user_name: {
+    email: {
         type: String
     },
-    user_password: {
+    password: {
         type: String
     },
     faved_restaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }]
     
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('users', userSchema);
 
 module.exports = User;
 

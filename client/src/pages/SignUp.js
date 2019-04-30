@@ -18,10 +18,10 @@ class SignUp extends Component {
       <input type="text" placeholder="Enter Email" name="email" required></input>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required></input>
+      <input type="password" placeholder="Enter Password" name="password" required></input>
   
       <label id="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required></input>
+      <input type="password" placeholder="Repeat Password" name="password2" required></input>
       
       
       
