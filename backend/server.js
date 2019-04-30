@@ -5,6 +5,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const UserRoutes = express.Router();
 const PORT = process.env.PORT || 3001;
+const path = require('path');
+
 //const routes = require("routes")
 
 app.get("*", (req, res) => {
@@ -20,7 +22,9 @@ app.use(express.static("/client/build/"));
 
 
 
+
 //app.use(routes);
+
 
 // DB Config
 const db = require("./config/keys").mongoURI;
