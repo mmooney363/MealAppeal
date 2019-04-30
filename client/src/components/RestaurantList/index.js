@@ -67,7 +67,7 @@ class RestaurantList extends Component {
 
     renderEmptyState() {
         return (
-            <h2 className="heading-tertiary" style={{ textAlign: "center", backgroundColor:"rgba(211,211,211, .7)", width:"92%", margin: "auto" }}>Please Enter Your Zip Code and Food Choice, then Press Search!</h2>
+            <h2 className="heading-tertiary" style={{ textAlign: "center", backgroundColor:"rgba(211,211,211, .7)", width:"100%", margin: "auto" }}>Please Enter Your Zip Code and Food Choice, then Press Search!</h2>
         )
     }
 

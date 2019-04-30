@@ -93,7 +93,7 @@ class SpinResult extends Component {
           </Accordion.Toggle>
           {/* </Card.Header> */}
           <Accordion.Collapse eventKey="2">
-            <Card.Body as={Button} variant="link" href={`${this.props.state.state.id.phone}`} style={{marginTop:"0px", fontWeight:"600"}}>{this.props.state.state.id.phone}</Card.Body>
+            <Card.Body as={Button} variant="link" href={`${this.props.state.state.id.phone}`} style={{marginTop:"0px", fontWeight:"500"}}>{this.props.state.state.id.phone}</Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card className="resultsCard">

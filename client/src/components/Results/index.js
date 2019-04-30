@@ -55,7 +55,7 @@ class Results extends Component {
           <Card.Header className="restaurantShow">
             <Card style={{ width: '100%' }}>
               <div style={{ position: "relative", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover", backgroundPosition:"center" }}>
-                <div class="heart"></div>
+                <div className="heart"></div>
               </div>
               <Card.Body className="restaurantName" style={{ textAlign: "center" }}>
                 <Card.Title style={{ fontWeight: "bold", marginBottom: "2px" }}>{this.props.state.state.id.name}</Card.Title>
@@ -74,7 +74,7 @@ class Results extends Component {
 
         <Card className="resultsCard">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+            <Accordion.Toggle as={Button} variant="link" eventKey="1" style={{ fontWeight:"bolder"}}>
               <i className="fas fa-user-edit"></i> Reviews
               <Accordion.Collapse eventKey="1">
 
@@ -91,17 +91,17 @@ class Results extends Component {
         </Card>
         <Card className="resultsCard">
           {/* <Card.Header> */}
-          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2" style={{ padding: "12px 32px" }}>
+          <Accordion.Toggle as={Card.Header} variant="link" eventKey="2" style={{ fontWeight:"bold", padding: "12px 32px" }}>
             <i className="fas fa-phone-volume"></i>  Call
           </Accordion.Toggle>
           {/* </Card.Header> */}
           <Accordion.Collapse eventKey="2">
-            <Card.Body>{this.props.state.state.id.phone}</Card.Body>
+            <Card.Body as={Button} variant="link" href={`${this.props.state.state.id.phone}`} style={{marginTop:"0px", fontWeight:"500"}}>{this.props.state.state.id.phone}</Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card className="resultsCard">
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="3">
+            <Accordion.Toggle as={Button} variant="link" eventKey="3" href={`${this.props.state.state.id.url}`} style={{fontWeight:"700", marginTop: "0px", fontFamily:"Arial, Helvetica, sans-serif"}}>
               <i className="fas fa-laptop"></i>   Website
             </Accordion.Toggle>
           </Card.Header>
