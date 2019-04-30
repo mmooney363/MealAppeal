@@ -7,7 +7,6 @@ class Winner extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       results: [],
       hidden: "hidden"
@@ -25,7 +24,6 @@ class Winner extends Component {
   componentWillMount() {
     this.getRestaurants();
     var that = this;
-    console.log(that.props);
     setTimeout(function () {
       that.show();
     }, that.props.wait);
