@@ -141,7 +141,7 @@ class Spinner extends Component {
           <div id="shine"></div>
         </div>
         <Link to="/search"
-          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{ width: "85%", marginLeft: "auto", marginRight: "auto" }}>
+          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{ width: "85%", marginLeft: "auto", marginRight: "auto", marginTop:"5%" }}>
           Want something more specific?
         </Link>
       </div>
