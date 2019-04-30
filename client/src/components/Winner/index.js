@@ -30,8 +30,6 @@ class Winner extends Component {
   }
 
 
-
-
   getRestaurants = () => {
     this.setState({ loading: true })
     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.result.id}/reviews`, {
@@ -48,7 +46,7 @@ class Winner extends Component {
       })
   }
 
-
+  
 
   renderWinner() {
 
@@ -84,6 +82,7 @@ class Winner extends Component {
       </div>
     );
   }
+  
 
   renderEmptyState() {
     return (
