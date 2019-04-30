@@ -10,10 +10,9 @@ class SignUp extends Component {
     <div>
       <Header />
     <form action="/action_page.php">
-    <div class="container">
+    <div className="container" style={{backgroundColor:"rgba(211,211,211,.7)"}}>
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
-      <hr></hr>
   
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required></input>
@@ -27,9 +26,9 @@ class SignUp extends Component {
       
       
   
-      <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn"> Sign Up </button>
+      <div className="clearfix">
+        <button type="button" className="cancelbtn">Cancel</button>
+        <button type="submit" className="signupbtn"> Sign Up </button>
 
       </div>
     </div>

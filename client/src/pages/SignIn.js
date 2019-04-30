@@ -11,10 +11,10 @@ class SignIn extends Component {
     <div>
     <Header/>
     <form action="/action_page.php">
-    <div class="container">
+    <div className="container" style={{backgroundColor:"rgba(211, 211, 211, .7)"}}>
     <h1>Sign In</h1>
     <p>Please enter your information to sign in.</p>
-    <hr></hr>
+    
 
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required></input>
@@ -24,11 +24,11 @@ class SignIn extends Component {
 
     
     
-    <div class="clearfix">
+    <div className="clearfix">
     
-      <button type="submit" class="signupbtn">Sign In</button>
+      <button type="submit" className="signupbtn">Sign In</button>
       <Link to="/signup"
-          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{backgroundColor:"blue", color:"white", padding:"14px 20px", margin:"8px 0", border:"none", cursor:"pointer", width:"50%", opacity:"0.9", float:"right", fontFamily:"Arial, Helvetica, sans-serif"}}>Sign-up
+          className={window.location.pathname === "/search" ? "nav-link active moreInfo" : "nav-link moreInfo"} variant="primary" size="lg" style={{backgroundColor:"#3DA5D9", color:"white", padding:"14px 20px", margin:"8px 0", border:"none", cursor:"pointer", width:"50%", opacity:"0.9", float:"right", fontFamily:"Arial, Helvetica, sans-serif"}}>Sign-up
         </Link>
 
     </div>
