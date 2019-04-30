@@ -2,7 +2,6 @@
 import RestaurantList from '../components/RestaurantList/index';
 import SearchForm from '../components/SearchForm/index';
 import React, { Component } from 'react';
-import Search from '../components/Search';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -32,7 +31,6 @@ class App extends Component {
         <Header />
         <br />
         <SearchForm onFormSubmit = {this.onFormSubmit}/>
-        <Search />
         <RestaurantList 
           searchLocationQuery = {this.state.searchLocationQuery}
           searchFoodQuery = {this.state.searchFoodQuery}

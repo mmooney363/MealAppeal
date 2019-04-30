@@ -53,7 +53,7 @@ class Results extends Component {
         <Card className="resultsCard">
           <Card.Header className="restaurantShow">
             <Card style={{ width: '100%' }}>
-              <div style={{ position: "relative", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover" }}>
+              <div style={{ position: "relative", margin: "0", height: "125px", width: "100%", backgroundImage: `url(${this.props.state.state.id.image_url})`, backgroundSize: "cover", backgroundPosition:"center" }}>
                 <div class="heart"></div>
               </div>
               <Card.Body className="restaurantName" style={{ textAlign: "center" }}>

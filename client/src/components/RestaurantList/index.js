@@ -15,11 +15,6 @@ class RestaurantList extends Component {
         };
     }
 
-    componentDidMount() {
-
-        
-    }
-
     componentDidUpdate(prevProps, prevState) {
         if (this.props.searchLocationQuery !== prevProps.searchLocationQuery || this.props.searchFoodQuery !== prevProps.searchFoodQuery || this.props.fPrices !== prevProps.fPrices || this.props.fRating !== prevProps.fRating) {
 
@@ -27,8 +22,6 @@ class RestaurantList extends Component {
                 results: [],
             }, () => this.getRestaurants(this.props.searchLocationQuery, this.props.searchFoodQuery, this.props.fPrices, this.props.fRating))
         }
-
-
     }
 
 
