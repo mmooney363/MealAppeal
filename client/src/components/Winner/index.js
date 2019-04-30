@@ -58,7 +58,7 @@ class Winner extends Component {
               <img className="spin-RestaurantInfo__img" src={this.props.result.image_url} alt=""  />
             </div>
             <div className="col-6 name-container">
-              <h2 className="heading-tertiary spin-RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px" }} >{this.props.result.name}</h2>
+              <h2 className="heading-tertiary spin-RestaurantInfo__name" style={{ fontWeight: "bold", lineHeight: "1", paddingTop: "10px", marginRight: "10px" }} >{this.props.result.name}</h2>
             </div>
           </div>
 
@@ -92,7 +92,6 @@ class Winner extends Component {
 
 
   render() {
-    console.log(this.props.result)
     return (
       <section className="RestaurantList">
         {this.renderWinner()}

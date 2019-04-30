@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Dropdown from "react-bootstrap/Dropdown";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import './style.css';
 
 class SearchForm extends Component {
