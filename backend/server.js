@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const UserRoutes = express.Router();
 const PORT = process.env.PORT || 3001;
-
+const path = require('path');
 //const routes = require("routes")
 
 
