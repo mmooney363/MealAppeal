@@ -6,32 +6,46 @@ const mongoose = require("mongoose");
 const UserRoutes = express.Router();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
-const routes = require('routes/api')
+const passport = require("passport");
+const users = require("./routes/api/users");
 //const routes = require("routes")
 
 
-app.use("/Users", UserRoutes);
+
 app.use(cors());
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(bodyParser.json());
 
 app.use(express.static("/client/build"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"))
- });
-//app.use(routes);
-
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"))
+//  });
 
 // DB Config
 const db = require("./config/keys").mongoURI;
 
-//Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true });
-const connection = mongoose.connection;
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
-connection.once("open", function () {
-  console.log("MongoDB database connection established successfully");
-});
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 app.listen(process.env.PORT || PORT, function () {
   console.log("Server is running on Port: " + PORT);
