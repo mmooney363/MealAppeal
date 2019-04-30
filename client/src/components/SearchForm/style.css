@@ -6,3 +6,7 @@ ul.search-results img {
   background-color: #3DA5D9;
   width:100%;
 }
+
+.searchForm {
+  background-color: rgba(211, 211, 211, 0.7);
+}
