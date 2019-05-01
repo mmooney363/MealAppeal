@@ -10,7 +10,7 @@ class SignIn extends Component {
 
     <div>
     <Header/>
-    <form action="/action_page.php">
+    <form action="/api/users/login" method="post">
     <div className="container" style={{backgroundColor:"rgba(211, 211, 211, .7)"}}>
     <h1>Sign In</h1>
     <p>Please enter your information to sign in.</p>
