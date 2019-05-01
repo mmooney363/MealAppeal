@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\"",
     "install": "cd client && npm install && cd ../backend && npm install",
-    "build": "cd ../backend && nodemon server.js && cd client && npm run build",
+    "build": "cd backend && nodemon server.js && cd ../client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
