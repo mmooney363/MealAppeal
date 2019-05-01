@@ -2,7 +2,7 @@
   "name": "MealAppeal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "concurrently": "^4.1.0",
     "express-session": "^1.16.1",
